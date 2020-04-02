@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Server_Test</string>
+    <string name="text_view1">Text View </string>
+    <string name="text_view2">Text View 2</string>
+    <string name="text_view3">Text View 3</string>
+
 </resources>

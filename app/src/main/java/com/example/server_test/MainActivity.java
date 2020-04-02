@@ -1,11 +1,15 @@
 package com.example.server_test;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -20,13 +24,39 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    private TextView mTextViewResult;
-    private RequestQueue mQueue;
+
+    //private static final String TAG = "MainActivity";
+
+    public RecyclerView mRecyclerView;
+    public RecyclerView.Adapter mAdapter;
+    public RecyclerView.LayoutManager mLayoutManager;
+
+    //private TextView mTextViewResult;
+    // private RequestQueue mQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //creating the list here
+        ArrayList<food_item> foodList = new ArrayList<>();
+        foodList.add(new food_item("Apple", "2/12/2020"));
+        foodList.add(new food_item("Banana", "3/15/2020"));
+        foodList.add(new food_item("Pizza", "2/16/2020"));
+
+        mRecyclerView = findViewById(R.id.RecycleView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new foodAdapter(foodList);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+        /*ListView mListView = (ListView) findViewById(R.id.list_view);
 
         mTextViewResult =findViewById(R.id.text_view_result);
         Button buttonParse = findViewById(R.id.button_parse);
@@ -38,12 +68,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 jsonParse();
             }
-        });
+        }); */
     }
 
-    private void jsonParse(){
-        String url = "http://ec2-54-219-185-106.us-west-1.compute.amazonaws.com/fridgemateapi/v1/api.php?apicall=getfridge";
-        mTextViewResult.setText("");
+} //should delete this after comments
+
+   /* private void jsonParse(){
+        String url = "142.93.17.92:88/fridgeunfucker/";
+
+        final ArrayList<FoodName> foodList = new ArrayList<>();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() { //called when request was a success
                     @Override
@@ -57,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                                 String item = hero.getString("item");
                                 String expiration = hero.getString("exipiration");
 
-                                mTextViewResult.append(item + " has an expiration date of " + expiration +"\n\n");
+                                foodList.add(new FoodName(item,expiration));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -72,4 +105,4 @@ public class MainActivity extends AppCompatActivity {
 
         mQueue.add(request);
     }
-}
+} */
