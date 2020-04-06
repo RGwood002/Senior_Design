@@ -3,5 +3,10 @@
     <string name="text_view1">Text View </string>
     <string name="text_view2">Text View 2</string>
     <string name="text_view3">Text View 3</string>
-
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="createact">Create Account</string>
+    <string name="firstName">First name</string>
+    <string name="lastName">Last Name</string>
 </resources>
