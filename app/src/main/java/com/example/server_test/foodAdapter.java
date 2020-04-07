@@ -3,6 +3,7 @@ package com.example.server_test;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,15 @@ import java.util.ArrayList;
 
 public class foodAdapter extends RecyclerView.Adapter<foodAdapter.ExampleViewHolder> {
     private ArrayList<food_item> mExampleList;
+    private onItemClickListener mListener;
+
+    public interface onItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener){
+        mListener = listener;
+    }
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView1;
@@ -21,6 +31,8 @@ public class foodAdapter extends RecyclerView.Adapter<foodAdapter.ExampleViewHol
             super(itemView);
             mTextView1 = itemView.findViewById(R.id.food_item);
             mTextView2 = itemView.findViewById(R.id.date);
+
+
         }
     }
 

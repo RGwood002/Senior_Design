@@ -9,4 +9,11 @@
     <string name="createact">Create Account</string>
     <string name="firstName">First name</string>
     <string name="lastName">Last Name</string>
+    <string name="updateButton">Update</string>
+    <string name="rightButton">Right</string>
+    <string name="allFridge">My Fridge</string>
+    <string name="shoppingListString">Shopping List</string>
+    <string name="aboutExpire">About to expire</string>
+    <string name="addItem">Add</string>
+    <string name="removeButton">Remove</string>
 </resources>
